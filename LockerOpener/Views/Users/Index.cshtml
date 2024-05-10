@@ -1,0 +1,13 @@
+﻿@model UsersViewModel
+@{
+    ViewData["Title"] = "Welcome to Showdown in Cyberspace";
+}
+
+<h1>
+    Welcome gamer!
+</h1>
+
+<form method="post" asp-action="openLocker">
+    <button type="submit">Open locker</button>
+    <input type="hidden" name="lockerId" value="@Model.Id" />
+</form>
