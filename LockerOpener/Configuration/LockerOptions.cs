@@ -14,5 +14,9 @@
         public string Email { get; set; }
         public string Password { get; set; }
         public string Platform { get; set; } = "web";
+
+        public string DeviceId { get; set; }
+
+        public string SubscriptionKey { get; set; }
     }
 }

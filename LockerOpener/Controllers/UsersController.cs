@@ -15,16 +15,17 @@ namespace LockerOpener.Controllers
             _lockerClient = lockerClient ?? throw new ArgumentNullException(nameof(lockerClient));
         }
 
-        public IActionResult Index(string id)
+        [HttpGet("users/{id}")]
+        public IActionResult Index([FromRoute] string id)
         {
             var model = new UsersViewModel { Id = id };
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> OpenLocker([FromForm] string id)
+        public async Task<IActionResult> OpenLocker([FromForm] string lockerId)
         {
-            await _lockerClient.OpenLocker(id);
+            await _lockerClient.OpenLocker(lockerId);
             return RedirectToAction(nameof(Done));
         }
 

@@ -18,6 +18,10 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
-  background-color: black;
+    margin-bottom: 60px;
+    background-color: #2E2F36;
+}
+
+.text-center {
+    text-align: center;
 }

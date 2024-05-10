@@ -19,11 +19,15 @@ namespace LockerOpener.Services
             // get all lockers
             //var client = _httpClient.GetFromJsonAsync<LockerWall>($"/api/SmartHubUsers/lockerwalls/{_lockerOptions.SiteId}");
 
-            var authResult = await _httpClient.PostAsJsonAsync("/api/account/Login", new
+            _httpClient.DefaultRequestHeaders.CacheControl = System.Net.Http.Headers.CacheControlHeaderValue.Parse("no-cache");
+            _httpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _lockerOptions.Authentication.SubscriptionKey);
+
+            var authResult = await _httpClient.PostAsJsonAsync("/v1/api/account/Login", new
             {
                 email = _lockerOptions.Authentication.Email,
                 password = _lockerOptions.Authentication.Password,
                 platform = _lockerOptions.Authentication.Platform,
+                deviceId = _lockerOptions.Authentication.DeviceId
             });
 
             authResult.EnsureSuccessStatusCode();
@@ -31,8 +35,9 @@ namespace LockerOpener.Services
             var tokenResult = await authResult.Content.ReadFromJsonAsync<LockerAuthenticationResult>();
 
             _httpClient.DefaultRequestHeaders.Add("X-api-key", tokenResult.Result.AccessToken);
+            _httpClient.DefaultRequestHeaders.Add("Bearer", tokenResult.Result.AccessToken);
 
-            var result = await _httpClient.PostAsJsonAsync("/api/SmartHubUsers/OpenLocker ", new
+            var result = await _httpClient.PostAsJsonAsync("/v1/api/SmartHubUsers/OpenLocker ", new
             {
                 lockerId = lockerId,
                 lockerOpenType = 1,

@@ -7,7 +7,7 @@
     Welcome gamer!
 </h1>
 
-<form method="post" action="openLocker">
+<form method="post" asp-action="openLocker">
     <button type="submit">Open locker</button>
-    <input type="hidden" value="@Model.Id" />
+    <input type="hidden" name="lockerId" value="@Model.Id" />
 </form>

@@ -12,6 +12,7 @@ var lockerOptions = builder.Configuration.GetSection("Locker").Get<LockerOptions
 builder.Services.AddHttpClient<LockerClient>(client =>
 {
     client.BaseAddress = new Uri(lockerOptions.BaseUrl);
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
 });
 
 builder.Services.AddSingleton(lockerOptions);
