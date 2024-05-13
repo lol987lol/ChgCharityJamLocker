@@ -18,10 +18,78 @@ html {
 }
 
 body {
-    margin-bottom: 60px;
     background-color: #2E2F36;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    background-image: url('/img/background_1024.jpg');
+    font-family: Arial, Helvetica, sans-serif;
+    color: azure;
+    padding-top: 15em;
 }
 
 .text-center {
     text-align: center;
+}
+
+.headline {
+    text-transform:uppercase;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+p.headline {
+    background-color: #000000b2;  
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1920px) {
+    body {
+        background-image: url('/img/background_1280.jpg');
+    }
+}
+
+@media only screen and (min-width: 1920px) and (max-width: 2560px) {
+    body {
+        background-image: url('/img/background_1920.jpg');
+    }
+}
+
+@media only screen and (min-width: 2560px) and (max-width: 3840px) {
+    body {
+        background-image: url('/img/background_2560.jpg');
+    }
+}
+
+@media only screen and (min-width: 3840px) {
+    body {
+        background-image: url('/img/background_3840.jpg');
+    }
+}
+
+
+@media only screen and (min-width: 1170px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+    body {
+        background-image: url('/img/background_mobile_1290.jpg');
+    }
+}
+
+
+@media only screen and (min-width: 1080px) and (max-width: 1170px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+    body {
+        background-image: url('/img/background_mobile_1170.jpg');
+    }
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1080px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+    body {
+        background-image: url('/img/background_mobile_1080.jpg');
+    }
+}
+
+
+@media only screen and (max-width: 750px) and (orientation: portrait) {
+    body {
+        background-image: url('/img/background_mobile_750.jpg');
+    }
 }
